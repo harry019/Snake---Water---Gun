@@ -2,26 +2,39 @@
 SNAKE WATER GUN 
 '''
 import random
-print("SNAKE WATER GUN")
+
+print("🎮 Welcome to SNAKE 🐍 WATER 💧 GUN 🔫 Game!")
+print("Type S for Snake, W for Water, G for Gun or type 'exit' to quit.")
+
 youDict = {"S": 1, "W": -1, "G": 0}
 reverseDict = {1: "Snake", -1: "Water", 0: "Gun"}
 
-computer = random.choice([-1, 0, 1])
+def main():
+    while True:
+        youstr = input("\nYour choice (S/W/G or exit): ").strip().upper()
 
-youstr = input("S for snake🐍, W for water💧, G for gun🔫: ").strip().upper()
+        if youstr == "EXIT":
+            print("👋 Thanks for playing! Goodbye!")
+            break
 
-if youstr not in youDict:
-    print("Invalid input! Please enter S, W, or G.")
-else:
-    you = youDict[youstr]
+        if youstr not in youDict:
+            print("❌ Invalid input! Please enter S, W, or G.")
+            continue
 
-    print(f"You chose {reverseDict[you]}\nComputer chose {reverseDict[computer]}")
+        computer = random.choice([-1, 0, 1])
+        you = youDict[youstr]
 
-    if computer == you:
-        print("It's a Draw!")
-    elif (you == 1 and computer == -1) or \
-         (you == -1 and computer == 0) or \
-         (you == 0 and computer == 1):
-        print("You Win!")
-    else:
-        print("You Lose!")
+        print(f"You chose {reverseDict[you]}")
+        print(f"Computer chose {reverseDict[computer]}")
+
+        if computer == you:
+            print("🤝 It's a Draw!")
+        elif (you == 1 and computer == -1) or \
+             (you == -1 and computer == 0) or \
+             (you == 0 and computer == 1):
+            print("✅ You Win!")
+        else:
+            print("❌ You Lose!")
+
+if __name__ == "__main__":
+    main()
